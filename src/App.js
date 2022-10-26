@@ -2,10 +2,11 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Counter from './components/Counter';
+import Employee from "./components/Employee";
 import {useState} from 'react';
 
 function App() {
-  const data = 'This is a data prop';
+  const data = 'This is a data props';
   const [count, setCount] = useState(0);
  
   const addCount = () => {
@@ -15,6 +16,13 @@ function App() {
     title: 'First Counter',
     count
   }
+
+  let emp = [
+    {name: 'Akhil', age: 27},
+    {name: 'Nikil', age: 29},
+    {name: 'Manu PP', age: 20},
+  ];
+
   return (
     <div>
       <Header data={data} />
@@ -25,10 +33,24 @@ function App() {
       <Description />
       <p>{data}</p><br></br>
 
+      <h3>Counter</h3><hr></hr>
       <Counter {...obj} />
       <Counter title="Second Counter" count={count} />
-
       <button onClick={addCount}>Add</button>
+      <br></br><br></br>
+      
+      <h3>Employees</h3><hr></hr>
+      {
+        // emp.map((value, index)=>{
+        //   return(<Employee key={index} name={value.name} age={value.age} />);
+        // })
+        emp.map((value, index)=>{
+          return(<Employee key={index} {...value} />);
+        })
+      }
+      <br></br><br></br>
+      
+      <br></br><br></br><br></br>
       <Footer data={data} />
     </div>
   );
