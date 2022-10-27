@@ -3,11 +3,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Counter from './components/Counter';
 import Employee from "./components/Employee";
+import SampleComp from './components/SampleComp';
 import {useState} from 'react';
 
 function App() {
   const data = 'This is a data props';
   const [count, setCount] = useState(0);
+  const [state, setState] = useState(false);
  
   const addCount = () => {
     setCount(count+1);
@@ -49,6 +51,11 @@ function App() {
         })
       }
       <br></br><br></br>
+
+      <h3>Mounting Unmounting Update</h3><hr></hr>
+      <button onClick={()=> setState(!state)}>Show/hide</button>
+      {/* {state ? <SampleComp /> : null} */}
+      {state && <SampleComp />}
       
       <br></br><br></br><br></br>
       <Footer data={data} />
